@@ -1,5 +1,23 @@
 # TP1-FAST-NATI-MI3
-Groupe 1
-Application de gestion des inscriptions universitaires
- 
- Modélisation UML d'une application de gestion des inscriptions universitaires . Le projet présente le diagramme de cas d'utilisation, le diagramme de classes avec les classes Étudiant, Inscription, Filière, Niveau, Année Académique et Scolarité, et le diagramme de séquence pour l'inscription d'un étudiant, en respectant la règle : un couple (matricule + année) est unique pour éviter la double inscription ainsi qu'un Rapport complet au format PDF 
+
+TP - Modélisation UML et POO en C++ | Groupe 1 - FAST Natitingou
+Année : 2026-2027 | Filière : MI
+
+Ce dépôt contient les livrables des deux exercices demandés.
+
+*Travaux Pratique 1 : *Gestion des Inscriptions Universitaires*
+Déposé : Modélisation UML complète.
+- Diagramme de cas d'utilisation
+- Diagramme de classes avec Etudiant, Inscription, Filiere, Niveau, AnneeAcademique, Scolarite
+- Diagramme de séquence pour l'inscription d'un étudiant
+Règle respectée : un couple (matricule + année) est unique.
+
+*Exercice 1: *Gestion d'une Bibliothèque Universitaire*
+Déposé : Modélisation UML + Implémentation C++.
+- Diagramme de cas d'utilisation
+- Diagramme de classes avec Livre, Etudiant, Emprunt, Bibliotheque
+- Programme C++ complet : main.cpp
+- Programme permettant d'emprunter et de retourner un livre, avec vérification de disponibilité
+Règle respectée : un étudiant peut emprunter plusieurs livres, mais un livre ne peut être emprunté que par un seul étudiant à la fois.
+
+Notions mobilisées : Classes et objets, attributs et méthodes, constructeurs, encapsulation.
