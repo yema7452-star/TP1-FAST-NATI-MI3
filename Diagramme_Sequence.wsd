@@ -1,0 +1,30 @@
+@startuml
+title Scénario : Inscription d'un étudiant
+autonumber
+
+actor AgentScolarite
+boundary InterfaceScolarite
+control Scolarite
+entity Etudiant
+entity Inscription
+
+AgentScolarite -> InterfaceScolarite : saisirMatriculeEtAnnee(matricule, annee)
+InterfaceScolarite -> Scolarite : verifierInscription(matricule, annee)
+Scolarite -> Etudiant : rechercherEtudiant(matricule)
+Etudiant --> Scolarite : retourEtudiant() ou null
+
+alt Étudiant déjà inscrit
+    Scolarite --> InterfaceScolarite : erreurDejaInscrit()
+    InterfaceScolarite --> AgentScolarite : afficherMessageErreur()
+else Étudiant non inscrit
+    Scolarite --> InterfaceScolarite : autoriserInscription()
+    AgentScolarite -> InterfaceScolarite : saisirInfosFiliereNiveauPaiement(...)
+    InterfaceScolarite -> Scolarite : creerInscription(etudiant, filiere, niveau, annee, montant)
+    Scolarite -> Inscription : créerInscription(...)
+    Inscription --> Scolarite : instanceInscription
+    Scolarite -> Scolarite : ajouterInscription(instanceInscription)
+    Scolarite --> InterfaceScolarite : confirmationInscription()
+    InterfaceScolarite --> AgentScolarite : afficherSuccesEtProposerAttestation()
+end
+
+@enduml

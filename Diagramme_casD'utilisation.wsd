@@ -1,0 +1,72 @@
+@startuml
+title Application de gestion des inscriptions universitaires
+skinparam classAttributeIconSize 0
+
+class Etudiant {
+  - matricule : String
+  - nom : String
+  - prenom : String
+  - dateNaissance : Date
+  - telephone : String
+  + getInfos() : String
+  + estInscrit(annee : AnneeAcademique) : boolean
+}
+
+class Inscription {
+  - idInscription : int
+  - dateInscription : Date
+  - montantPaye : double
+  - statutPaiement : boolean
+  + validerInscription() : void
+  + genererAttestation() : File
+}
+
+class Filiere {
+  - codeFiliere : String
+  - libelle : String
+  + getEffectif() : int
+}
+
+class Niveau {
+  - codeNiveau : String
+  - libelle : String
+  - fraisScolarite : double
+  + getFrais() : double
+}
+
+class AnneeAcademique {
+  - idAnnee : String
+  - estActive : boolean
+  + ouvrirAnnee() : void
+  + cloturerAnnee() : void
+}
+
+class Scolarite {
+  - listeEtudiants : List<Etudiant>
+  - listeInscriptions : List<Inscription>
+  - listeFilieres : List<Filiere>
+  + enregistrerInscription() : void
+  + rechercherParMatricule(matricule : String) : Etudiant
+  + listerParAnnee(annee : AnneeAcademique) : List<Inscription>
+  + sauvegarderFichier() : void
+}
+
+Etudiant "1" -- "0..*" Inscription : possède
+Filiere "1" -- "0..*" Inscription : concerne
+Niveau "1" -- "0..*" Inscription : définit
+AnneeAcademique "1" -- "0..*" Inscription : regroupe
+
+Scolarite "1" o-- "0..*" Etudiant : gère
+Scolarite "1" o-- "0..*" Inscription : gère
+Scolarite "1" o-- "0..*" Filiere : gère
+
+note right of Inscription
+Une seule inscription active
+par étudiant et par année.
+end note
+
+note bottom of Etudiant
+Le matricule est unique.
+end note
+
+@enduml
